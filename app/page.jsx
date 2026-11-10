@@ -147,9 +147,6 @@ export default function Preventivo() {
         </p>
         <div style={{ marginTop: 14, display: "inline-flex", gap: 8, alignItems: "center", flexWrap: "wrap", justifyContent: "center" }}>
           <span style={{ fontSize: "calc(12px * var(--fs))", color: "#b0b0b0", fontFamily: SANS }}>Emesso il {formatData(date.emissione)}</span>
-          <span style={{ fontSize: "calc(12px * var(--fs))", fontWeight: 700, fontFamily: SANS, color: scaduto ? "#fff" : "#1C1C1C", background: scaduto ? "#C0392B" : "#F5E97A", borderRadius: 999, padding: "4px 10px" }}>
-            ⏳ {testoScadenza}
-          </span>
         </div>
       </div>
 
