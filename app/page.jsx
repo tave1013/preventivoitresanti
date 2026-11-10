@@ -88,13 +88,15 @@ export default function Preventivo() {
     { id: "not", label: "Non incluso e note" },
   ];
 
-  const sectionLabel = { fontSize: 12, color: "#999", padding: "10px 0 6px", textTransform: "uppercase", letterSpacing: 1, fontFamily: SANS, fontWeight: 600 };
+  const sectionLabel = { fontSize: "calc(12px * var(--fs))", color: "#999", padding: "10px 0 6px", textTransform: "uppercase", letterSpacing: 1, fontFamily: SANS, fontWeight: 600 };
 
   return (
     <div style={{ fontFamily: "'Georgia', serif", background: "#FAFAF8", minHeight: "100vh", padding: "0" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --fs: 1; }
+        @media (max-width: 500px) { :root { --fs: 1.15; } }
         body { font-family: 'DM Sans', sans-serif; }
         .serif { font-family: 'DM Serif Display', serif; }
         .wrap { max-width: 720px; margin: 0 auto; }
@@ -103,25 +105,25 @@ export default function Preventivo() {
         .plan-btn { border: none; cursor: pointer; transition: all .2s; font-family: 'DM Sans', sans-serif; }
         .plan-btn:hover { transform: translateY(-1px); }
         .tab-btn { border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all .15s; }
-        .not-inc { display: flex; gap: 8px; align-items: flex-start; padding: 7px 0; font-size: 13px; color: #888; line-height: 1.5; }
-        .tool-tag { display: inline-block; padding: 3px 9px; border-radius: 20px; font-size: 11px; background: rgba(0,0,0,0.06); color: #555; margin: 2px; font-family: 'DM Sans', sans-serif; }
+        .not-inc { display: flex; gap: 8px; align-items: flex-start; padding: 7px 0; font-size: calc(13px * var(--fs)); color: #888; line-height: 1.5; }
+        .tool-tag { display: inline-block; padding: 3px 9px; border-radius: 20px; font-size: calc(11px * var(--fs)); background: rgba(0,0,0,0.06); color: #555; margin: 2px; font-family: 'DM Sans', sans-serif; }
         .price-line { display: block; line-height: 1.25; }
-        .sec-head { display: flex; align-items: center; gap: 8px; padding: 14px 0 4px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
+        .sec-head { display: flex; align-items: center; gap: 8px; padding: 14px 0 4px; font-size: calc(12px * var(--fs)); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
         .cond-btn { width: 100%; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 11px 0; text-align: left; font-family: 'DM Sans', sans-serif; }
         .step { flex: 1; min-width: 0; }
         .inv-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
         .chk { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 10px; cursor: pointer; font-family: 'DM Sans', sans-serif; }
         .chk input { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; cursor: pointer; }
-        .manina { position: absolute; top: -38px; left: 50%; z-index: 5; font-size: 28px; line-height: 1; pointer-events: none; animation: manina 1.1s ease-in-out infinite; filter: drop-shadow(0 3px 4px rgba(0,0,0,0.18)); }
+        .manina { position: absolute; top: -38px; left: 50%; z-index: 5; font-size: calc(28px * var(--fs)); line-height: 1; pointer-events: none; animation: manina 1.1s ease-in-out infinite; filter: drop-shadow(0 3px 4px rgba(0,0,0,0.18)); }
         @keyframes manina { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 6px); } }
-        .torna-su { position: fixed; left: 16px; bottom: 18px; z-index: 60; width: 46px; height: 46px; border-radius: 999px; border: none; cursor: pointer; background: #1C1C1C; color: #fff; font-size: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 24px rgba(0,0,0,0.22); transition: opacity .45s cubic-bezier(.22,1,.36,1), transform .45s cubic-bezier(.22,1,.36,1); }
+        .torna-su { position: fixed; left: 16px; bottom: 18px; z-index: 60; width: 46px; height: 46px; border-radius: 999px; border: none; cursor: pointer; background: #1C1C1C; color: #fff; font-size: calc(20px * var(--fs)); display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 24px rgba(0,0,0,0.22); transition: opacity .45s cubic-bezier(.22,1,.36,1), transform .45s cubic-bezier(.22,1,.36,1); }
         @media (prefers-reduced-motion: reduce) { .manina { animation: none; } .torna-su { transition: none; } }
         @media (max-width: 500px) {
-          h1 { font-size: 26px !important; }
+          h1 { font-size: calc(26px * var(--fs)) !important; }
           .plan-btn { padding: 12px 8px !important; }
-          .tab-btn { font-size: 11.5px !important; padding: 7px 5px !important; }
+          .tab-btn { font-size: calc(11.5px * var(--fs)) !important; padding: 7px 5px !important; }
           .check-item { gap: 8px; padding: 8px 0; }
-          .price-line { font-size: 11px; }
+          .price-line { font-size: calc(11px * var(--fs)); }
           .steps { flex-direction: column; }
           .plan-foot { flex-direction: column; align-items: flex-start !important; gap: 12px !important; }
           .plan-foot-tools { text-align: left !important; }
@@ -131,19 +133,19 @@ export default function Preventivo() {
 
       {/* HEADER */}
       <div style={{ background: "#1C1C1C", padding: "28px 24px 24px", textAlign: "center" }}>
-        <div style={{ fontSize: 12, color: "#888", letterSpacing: 2, textTransform: "uppercase", marginBottom: 8, fontFamily: SANS }}>Proposta di servizio 2026</div>
-        <h1 className="serif" style={{ fontSize: 30, color: "#fff", fontWeight: 400, marginBottom: 4 }}>
+        <div style={{ fontSize: "calc(12px * var(--fs))", color: "#888", letterSpacing: 2, textTransform: "uppercase", marginBottom: 8, fontFamily: SANS }}>Proposta di servizio 2026</div>
+        <h1 className="serif" style={{ fontSize: "calc(30px * var(--fs))", color: "#fff", fontWeight: 400, marginBottom: 4 }}>
           {cliente.emoji} {cliente.nome}
         </h1>
-        <div style={{ fontSize: 13, color: "#666", fontFamily: SANS, marginBottom: 10 }}>
+        <div style={{ fontSize: "calc(13px * var(--fs))", color: "#666", fontFamily: SANS, marginBottom: 10 }}>
           {cliente.titolare} · {cliente.indirizzo}
         </div>
-        <p style={{ fontSize: 14, color: "#888", fontFamily: SANS, maxWidth: 440, margin: "0 auto", lineHeight: 1.5 }}>
+        <p style={{ fontSize: "calc(14px * var(--fs))", color: "#888", fontFamily: SANS, maxWidth: 440, margin: "0 auto", lineHeight: 1.5 }}>
           {cliente.intro}
         </p>
         <div style={{ marginTop: 14, display: "inline-flex", gap: 8, alignItems: "center", flexWrap: "wrap", justifyContent: "center" }}>
-          <span style={{ fontSize: 12, color: "#999", fontFamily: SANS }}>Emesso il {formatData(date.emissione)}</span>
-          <span style={{ fontSize: 12, fontWeight: 700, fontFamily: SANS, color: scaduto ? "#fff" : "#1C1C1C", background: scaduto ? "#C0392B" : "#F5E97A", borderRadius: 999, padding: "4px 10px" }}>
+          <span style={{ fontSize: "calc(12px * var(--fs))", color: "#999", fontFamily: SANS }}>Emesso il {formatData(date.emissione)}</span>
+          <span style={{ fontSize: "calc(12px * var(--fs))", fontWeight: 700, fontFamily: SANS, color: scaduto ? "#fff" : "#1C1C1C", background: scaduto ? "#C0392B" : "#F5E97A", borderRadius: 999, padding: "4px 10px" }}>
             ⏳ {testoScadenza}
           </span>
         </div>
@@ -155,16 +157,16 @@ export default function Preventivo() {
           <div style={{ background: "#FDF1EC", border: "1px dashed #D85A30", borderRadius: 12, padding: "12px 14px" }}>
             {scaduto ? (
               <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-                <span style={{ fontSize: 20 }}>⌛</span>
-                <span style={{ flex: 1, fontSize: 13.5, color: "#555", lineHeight: 1.5, fontFamily: SANS }}>
+                <span style={{ fontSize: "calc(20px * var(--fs))" }}>⌛</span>
+                <span style={{ flex: 1, fontSize: "calc(13.5px * var(--fs))", color: "#555", lineHeight: 1.5, fontFamily: SANS }}>
                   <b style={{ color: "#D85A30" }}>Il preventivo è scaduto</b> il {formatData(date.scadenza)}. Scrivici per riceverne uno aggiornato.
                 </span>
               </div>
             ) : (
               <>
                 <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-                  <span style={{ fontSize: 20, flexShrink: 0 }}>⏳</span>
-                  <span style={{ flex: 1, fontSize: 13.5, color: "#555", lineHeight: 1.5, fontFamily: SANS }}>
+                  <span style={{ fontSize: "calc(20px * var(--fs))", flexShrink: 0 }}>⏳</span>
+                  <span style={{ flex: 1, fontSize: "calc(13.5px * var(--fs))", color: "#555", lineHeight: 1.5, fontFamily: SANS }}>
                     <b style={{ color: "#D85A30" }}>Il preventivo scade il {formatData(date.scadenza)}.</b> I prezzi riservati valgono solo se accetti entro questa data.
                   </span>
                 </div>
@@ -176,8 +178,8 @@ export default function Preventivo() {
                     ["secondi", resto?.s],
                   ].map(([lab, v]) => (
                     <div key={lab} style={{ flex: 1, background: "#fff", border: "1px solid #F5C4B3", borderRadius: 10, padding: "8px 4px", textAlign: "center" }}>
-                      <div className="serif" style={{ fontSize: 24, color: "#D85A30", lineHeight: 1.1 }}>{v === undefined ? "--" : String(v).padStart(2, "0")}</div>
-                      <div style={{ fontSize: 10.5, color: "#999", textTransform: "uppercase", letterSpacing: 1, fontFamily: SANS, marginTop: 2 }}>{lab}</div>
+                      <div className="serif" style={{ fontSize: "calc(24px * var(--fs))", color: "#D85A30", lineHeight: 1.1 }}>{v === undefined ? "--" : String(v).padStart(2, "0")}</div>
+                      <div style={{ fontSize: "calc(10.5px * var(--fs))", color: "#999", textTransform: "uppercase", letterSpacing: 1, fontFamily: SANS, marginTop: 2 }}>{lab}</div>
                     </div>
                   ))}
                 </div>
@@ -189,15 +191,15 @@ export default function Preventivo() {
         {/* INTRO E STEP */}
         <div style={{ padding: "14px 20px 0" }}>
           <div style={{ background: "#fff", border: "1px solid #E8E8E4", borderRadius: 14, padding: "16px 16px 14px" }}>
-            <div className="serif" style={{ fontSize: 20, color: "#1C1C1C", lineHeight: 1.3, marginBottom: 8 }}>{intro.titolo}</div>
-            <p style={{ fontSize: 13.5, color: "#666", lineHeight: 1.7, fontFamily: SANS }}>{intro.testo}</p>
+            <div className="serif" style={{ fontSize: "calc(20px * var(--fs))", color: "#1C1C1C", lineHeight: 1.3, marginBottom: 8 }}>{intro.titolo}</div>
+            <p style={{ fontSize: "calc(13.5px * var(--fs))", color: "#666", lineHeight: 1.7, fontFamily: SANS }}>{intro.testo}</p>
             <div className="steps" style={{ display: "flex", gap: 10, marginTop: 14 }}>
               {intro.step.map((s) => (
                 <div key={s.n} className="step" style={{ display: "flex", gap: 10, alignItems: "flex-start", background: "#F5F4EF", borderRadius: 10, padding: "10px 12px" }}>
-                  <span className="serif" style={{ fontSize: 22, color: "#4F7398", lineHeight: 1 }}>{s.n}</span>
+                  <span className="serif" style={{ fontSize: "calc(22px * var(--fs))", color: "#4F7398", lineHeight: 1 }}>{s.n}</span>
                   <div>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: "#1C1C1C", fontFamily: SANS }}>{s.titolo}</div>
-                    <div style={{ fontSize: 12.5, color: "#888", fontFamily: SANS, lineHeight: 1.5, marginTop: 2 }}>{s.testo}</div>
+                    <div style={{ fontSize: "calc(13px * var(--fs))", fontWeight: 700, color: "#1C1C1C", fontFamily: SANS }}>{s.titolo}</div>
+                    <div style={{ fontSize: "calc(12.5px * var(--fs))", color: "#888", fontFamily: SANS, lineHeight: 1.5, marginTop: 2 }}>{s.testo}</div>
                   </div>
                 </div>
               ))}
@@ -223,11 +225,11 @@ export default function Preventivo() {
                   textAlign: "center",
                 }}
               >
-                <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1, textTransform: "uppercase", opacity: active === p.id ? 1 : 0.6, marginBottom: 4 }}>
+                <div style={{ fontSize: "calc(11px * var(--fs))", fontWeight: 600, letterSpacing: 1, textTransform: "uppercase", opacity: active === p.id ? 1 : 0.6, marginBottom: 4 }}>
                   {p.numero}
                 </div>
-                <div style={{ fontSize: 17, fontWeight: 600, fontFamily: SERIF }}>{p.name}</div>
-                <div style={{ fontSize: 12, marginTop: 2, opacity: 0.85 }}>
+                <div style={{ fontSize: "calc(17px * var(--fs))", fontWeight: 600, fontFamily: SERIF }}>{p.name}</div>
+                <div style={{ fontSize: "calc(12px * var(--fs))", marginTop: 2, opacity: 0.85 }}>
                   <span className="price-line"><s style={{ opacity: 0.6 }}>€{p.prezzoPieno}</s> €{p.prezzo}{p.periodo === "/mese" ? "/mese" : ""} + IVA</span>
                   <span className="price-line">{p.periodo === "/mese" ? `contratto di ${p.durata}` : p.periodo}</span>
                 </div>
@@ -243,11 +245,11 @@ export default function Preventivo() {
             onClick={() => setActive(altro.id)}
             style={{ width: "100%", textAlign: "left", background: "#FFFBEA", border: "1px dashed #D9B500", borderRadius: 12, padding: "12px 14px", display: "flex", gap: 10, alignItems: "center" }}
           >
-            <span style={{ fontSize: 20, flexShrink: 0 }}>🎁</span>
-            <span style={{ flex: 1, fontSize: 13, color: "#6B5500", lineHeight: 1.5, fontFamily: SANS }}>
+            <span style={{ fontSize: "calc(20px * var(--fs))", flexShrink: 0 }}>🎁</span>
+            <span style={{ flex: 1, fontSize: "calc(13px * var(--fs))", color: "#6B5500", lineHeight: 1.5, fontFamily: SANS }}>
               Prezzo riservato a te: con entrambi i servizi <b>risparmi € {investimento.risparmio}</b> nei primi 6 mesi.
             </span>
-            <span style={{ fontSize: 13, fontWeight: 700, color: altro.color, whiteSpace: "nowrap", fontFamily: SANS }}>Vedi {altro.name} →</span>
+            <span style={{ fontSize: "calc(13px * var(--fs))", fontWeight: 700, color: altro.color, whiteSpace: "nowrap", fontFamily: SANS }}>Vedi {altro.name} →</span>
           </button>
         </div>
 
@@ -258,29 +260,29 @@ export default function Preventivo() {
           <div style={{ background: plan.bg, border: `1px solid ${plan.border}`, borderRadius: 14, padding: "18px 18px 14px", marginBottom: 14 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10, marginBottom: 8 }}>
               <div>
-                <div style={{ fontSize: 11, color: plan.color, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", fontFamily: SANS }}>{plan.numero}</div>
-                <span className="serif" style={{ fontSize: 24, color: plan.color, fontWeight: 400 }}>{plan.name}</span>
-                <div style={{ fontSize: 14, color: "#666", marginTop: 2, fontFamily: SANS }}>{plan.tagline}</div>
+                <div style={{ fontSize: "calc(11px * var(--fs))", color: plan.color, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", fontFamily: SANS }}>{plan.numero}</div>
+                <span className="serif" style={{ fontSize: "calc(24px * var(--fs))", color: plan.color, fontWeight: 400 }}>{plan.name}</span>
+                <div style={{ fontSize: "calc(14px * var(--fs))", color: "#666", marginTop: 2, fontFamily: SANS }}>{plan.tagline}</div>
               </div>
               <div style={{ textAlign: "right", flexShrink: 0 }}>
-                <div style={{ fontSize: 13, color: "#999", fontFamily: SANS }}><s>€{plan.prezzoPieno}</s></div>
-                <div className="serif" style={{ fontSize: 26, color: plan.color, whiteSpace: "nowrap" }}>
-                  €{plan.prezzo}{plan.periodo === "/mese" && <span style={{ fontSize: 13, color: "#999", fontFamily: "sans-serif" }}>/mese</span>}
+                <div style={{ fontSize: "calc(13px * var(--fs))", color: "#999", fontFamily: SANS }}><s>€{plan.prezzoPieno}</s></div>
+                <div className="serif" style={{ fontSize: "calc(26px * var(--fs))", color: plan.color, whiteSpace: "nowrap" }}>
+                  €{plan.prezzo}{plan.periodo === "/mese" && <span style={{ fontSize: "calc(13px * var(--fs))", color: "#999", fontFamily: "sans-serif" }}>/mese</span>}
                 </div>
-                <div style={{ fontSize: 12, color: "#999", fontFamily: SANS }}>+ IVA</div>
+                <div style={{ fontSize: "calc(12px * var(--fs))", color: "#999", fontFamily: SANS }}>+ IVA</div>
               </div>
             </div>
-            <p style={{ fontSize: 13.5, color: "#555", lineHeight: 1.72, fontFamily: SANS }}>{plan.summary}</p>
+            <p style={{ fontSize: "calc(13.5px * var(--fs))", color: "#555", lineHeight: 1.72, fontFamily: SANS }}>{plan.summary}</p>
             <div className="plan-foot" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, marginTop: 12, paddingTop: 12, borderTop: `1px solid ${plan.border}` }}>
               <div style={{ fontFamily: SANS, flexShrink: 0 }}>
-                <span style={{ fontSize: 12, color: "#999" }}>{plan.periodo === "/mese" ? "Durata del contratto" : "Pagamento"}</span>
-                <div className="serif" style={{ fontSize: 20, color: plan.color }}>
+                <span style={{ fontSize: "calc(12px * var(--fs))", color: "#999" }}>{plan.periodo === "/mese" ? "Durata del contratto" : "Pagamento"}</span>
+                <div className="serif" style={{ fontSize: "calc(20px * var(--fs))", color: plan.color }}>
                   {plan.durata}
                 </div>
-                <div style={{ fontSize: 11.5, color: "#999", maxWidth: 170, lineHeight: 1.4 }}>{plan.extra}</div>
+                <div style={{ fontSize: "calc(11.5px * var(--fs))", color: "#999", maxWidth: 170, lineHeight: 1.4 }}>{plan.extra}</div>
               </div>
               <div className="plan-foot-tools" style={{ fontFamily: SANS, textAlign: "right" }}>
-                <div style={{ fontSize: 12, color: "#999" }}>{nVoci(plan)} servizi inclusi</div>
+                <div style={{ fontSize: "calc(12px * var(--fs))", color: "#999" }}>{nVoci(plan)} servizi inclusi</div>
                 <div style={{ marginTop: 4 }}>
                   {plan.tools.slice(0, 3).map((t) => (
                     <span key={t} className="tool-tag">{t}</span>
@@ -302,7 +304,7 @@ export default function Preventivo() {
                   flex: 1,
                   padding: "8px 6px",
                   borderRadius: 7,
-                  fontSize: 12.5,
+                  fontSize: "calc(12.5px * var(--fs))",
                   fontWeight: tab === t.id ? 600 : 400,
                   background: tab === t.id ? "#fff" : "transparent",
                   color: tab === t.id ? "#1C1C1C" : "#888",
@@ -319,26 +321,26 @@ export default function Preventivo() {
             <div style={{ background: "#fff", borderRadius: 12, padding: "4px 16px 8px", border: "1px solid #E8E8E4" }}>
               <div style={sectionLabel}>{plan.periodo === "/mese" ? "Incluso nel canone · ogni mese" : "Incluso nel servizio · pagato una volta"}</div>
               <div style={{ margin: "4px 0 8px", padding: "14px 14px", background: "#1C1C1C", borderRadius: 10, display: "flex", gap: 12, alignItems: "flex-start" }}>
-                <span style={{ fontSize: 26, flexShrink: 0, marginTop: 2 }}>{plan.profilo.icon}</span>
+                <span style={{ fontSize: "calc(26px * var(--fs))", flexShrink: 0, marginTop: 2 }}>{plan.profilo.icon}</span>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", gap: 8, alignItems: "center", marginBottom: 6, flexWrap: "wrap" }}>
-                    <div style={{ fontSize: 13, color: "#fff", fontWeight: 700, fontFamily: SANS }}>Cosa prevede il servizio?</div>
-                    <span style={{ fontSize: 11, color: "#fff", background: plan.color, borderRadius: 999, padding: "4px 9px", fontFamily: SANS, whiteSpace: "nowrap", fontWeight: 700 }}>{plan.profilo.badge}</span>
+                    <div style={{ fontSize: "calc(13px * var(--fs))", color: "#fff", fontWeight: 700, fontFamily: SANS }}>Cosa prevede il servizio?</div>
+                    <span style={{ fontSize: "calc(11px * var(--fs))", color: "#fff", background: plan.color, borderRadius: 999, padding: "4px 9px", fontFamily: SANS, whiteSpace: "nowrap", fontWeight: 700 }}>{plan.profilo.badge}</span>
                   </div>
-                  <div style={{ fontSize: 13.5, color: "#E8E2C8", fontWeight: 700, fontFamily: SERIF, marginBottom: 8, fontStyle: "italic", lineHeight: 1.4 }}>{plan.profilo.headline}</div>
-                  <p style={{ fontSize: 12.5, color: "#bbb", lineHeight: 1.65, fontFamily: SANS, margin: 0 }}>{plan.profilo.body}</p>
+                  <div style={{ fontSize: "calc(13.5px * var(--fs))", color: "#E8E2C8", fontWeight: 700, fontFamily: SERIF, marginBottom: 8, fontStyle: "italic", lineHeight: 1.4 }}>{plan.profilo.headline}</div>
+                  <p style={{ fontSize: "calc(12.5px * var(--fs))", color: "#bbb", lineHeight: 1.65, fontFamily: SANS, margin: 0 }}>{plan.profilo.body}</p>
                 </div>
               </div>
               <div style={{ margin: "4px 0 8px", padding: "12px 12px", background: plan.bg, border: `1px solid ${plan.border}`, borderRadius: 10 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", gap: 8, alignItems: "center" }}>
-                  <div style={{ fontSize: 13, color: plan.color, fontWeight: 700, fontFamily: SANS }}>{plan.supporto.title}</div>
-                  <span style={{ fontSize: 11, color: "#fff", background: plan.color, borderRadius: 999, padding: "4px 8px", fontFamily: SANS, whiteSpace: "nowrap" }}>{plan.supporto.badge}</span>
+                  <div style={{ fontSize: "calc(13px * var(--fs))", color: plan.color, fontWeight: 700, fontFamily: SANS }}>{plan.supporto.title}</div>
+                  <span style={{ fontSize: "calc(11px * var(--fs))", color: "#fff", background: plan.color, borderRadius: 999, padding: "4px 8px", fontFamily: SANS, whiteSpace: "nowrap" }}>{plan.supporto.badge}</span>
                 </div>
                 <div style={{ marginTop: 8 }}>
                   {plan.supporto.points.map((point, i) => (
                     <div key={i} style={{ display: "flex", gap: 8, marginBottom: i === plan.supporto.points.length - 1 ? 0 : 6 }}>
-                      <span style={{ color: plan.color, fontSize: 13 }}>•</span>
-                      <span style={{ fontSize: 12.5, color: "#555", lineHeight: 1.55, fontFamily: SANS }}>{point}</span>
+                      <span style={{ color: plan.color, fontSize: "calc(13px * var(--fs))" }}>•</span>
+                      <span style={{ fontSize: "calc(12.5px * var(--fs))", color: "#555", lineHeight: 1.55, fontFamily: SANS }}>{point}</span>
                     </div>
                   ))}
                 </div>
@@ -347,14 +349,14 @@ export default function Preventivo() {
               {plan.sections.map((sec) => (
                 <div key={sec.title}>
                   <div className="sec-head" style={{ color: plan.color }}>
-                    <span style={{ fontSize: 16 }}>{sec.icon}</span>{sec.title}
+                    <span style={{ fontSize: "calc(16px * var(--fs))" }}>{sec.icon}</span>{sec.title}
                   </div>
                   {sec.items.map((item, i) => (
                     <div key={i} className="check-item">
-                      <span style={{ fontSize: 14, flexShrink: 0, marginTop: 2, color: plan.color, fontWeight: 700 }}>✓</span>
+                      <span style={{ fontSize: "calc(14px * var(--fs))", flexShrink: 0, marginTop: 2, color: plan.color, fontWeight: 700 }}>✓</span>
                       <div>
-                        <div style={{ fontSize: 14.5, fontWeight: 600, color: "#1C1C1C", fontFamily: SANS }}>{item.label}</div>
-                        <div style={{ fontSize: 13, color: "#888", marginTop: 2, fontFamily: SANS, lineHeight: 1.5 }}>{item.sub}</div>
+                        <div style={{ fontSize: "calc(14.5px * var(--fs))", fontWeight: 600, color: "#1C1C1C", fontFamily: SANS }}>{item.label}</div>
+                        <div style={{ fontSize: "calc(13px * var(--fs))", color: "#888", marginTop: 2, fontFamily: SANS, lineHeight: 1.5 }}>{item.sub}</div>
                       </div>
                     </div>
                   ))}
@@ -366,18 +368,18 @@ export default function Preventivo() {
           {/* TAB: NON INCLUSO E NOTE */}
           {tab === "not" && (
             <div style={{ background: "#fff", borderRadius: 12, padding: "4px 16px 10px", border: "1px solid #E8E8E4" }}>
-              <div style={{ ...sectionLabel, fontSize: 11 }}>Non incluso</div>
+              <div style={{ ...sectionLabel, fontSize: "calc(11px * var(--fs))" }}>Non incluso</div>
               {nonIncluso.map((item, i) => (
                 <div key={i} className="not-inc">
-                  <span style={{ color: "#E53E3E", fontSize: 14, flexShrink: 0 }}>✕</span>
+                  <span style={{ color: "#E53E3E", fontSize: "calc(14px * var(--fs))", flexShrink: 0 }}>✕</span>
                   <span style={{ fontFamily: SANS }}>{item}</span>
                 </div>
               ))}
-              <div style={{ ...sectionLabel, fontSize: 11, paddingTop: 14 }}>Note</div>
+              <div style={{ ...sectionLabel, fontSize: "calc(11px * var(--fs))", paddingTop: 14 }}>Note</div>
               {noteFinali.map((n, i) => (
                 <div key={i} style={{ display: "flex", gap: 10, marginBottom: 8, alignItems: "flex-start" }}>
-                  <span style={{ fontSize: 14 }}>{n.icon}</span>
-                  <span style={{ fontSize: 13, color: "#666", lineHeight: 1.62, fontFamily: SANS }}>{n.text}</span>
+                  <span style={{ fontSize: "calc(14px * var(--fs))" }}>{n.icon}</span>
+                  <span style={{ fontSize: "calc(13px * var(--fs))", color: "#666", lineHeight: 1.62, fontFamily: SANS }}>{n.text}</span>
                 </div>
               ))}
             </div>
@@ -385,63 +387,63 @@ export default function Preventivo() {
 
           {/* IL TUO INVESTIMENTO */}
           <div style={{ marginTop: 14, padding: "14px 16px 16px", background: "#1C1C1C", borderRadius: 12 }}>
-            <div style={{ fontSize: 12, color: "#888", textTransform: "uppercase", letterSpacing: 1, marginBottom: 4, fontFamily: SANS, fontWeight: 600 }}>
+            <div style={{ fontSize: "calc(12px * var(--fs))", color: "#888", textTransform: "uppercase", letterSpacing: 1, marginBottom: 4, fontFamily: SANS, fontWeight: 600 }}>
               Il tuo investimento
             </div>
             {plans.map((p) => (
               <div key={p.id} className="inv-row">
                 <div style={{ fontFamily: SANS }}>
-                  <div style={{ fontSize: 14, color: "#fff", fontWeight: 600 }}>{p.name}</div>
-                  <div style={{ fontSize: 12, color: "#888", marginTop: 2, lineHeight: 1.45 }}>{p.periodo === "/mese" ? `Contratto di ${p.durata} · addebito automatico mensile · nessun rinnovo automatico` : "Pagamento unico · 50% alla firma, saldo alla messa online"}</div>
+                  <div style={{ fontSize: "calc(14px * var(--fs))", color: "#fff", fontWeight: 600 }}>{p.name}</div>
+                  <div style={{ fontSize: "calc(12px * var(--fs))", color: "#888", marginTop: 2, lineHeight: 1.45 }}>{p.periodo === "/mese" ? `Contratto di ${p.durata} · addebito automatico mensile · nessun rinnovo automatico` : "Pagamento unico · 50% alla firma, saldo alla messa online"}</div>
                 </div>
                 <div style={{ textAlign: "right", flexShrink: 0, fontFamily: SANS }}>
-                  <div style={{ fontSize: 12, color: "#777" }}><s>€ {p.prezzoPieno}</s></div>
-                  <div className="serif" style={{ fontSize: 20, color: p.id === "avvio" ? "#A9C27E" : "#9DBBD9", whiteSpace: "nowrap" }}>
-                    € {p.prezzo}{p.periodo === "/mese" && <span style={{ fontSize: 12, fontFamily: SANS }}>/mese</span>}
+                  <div style={{ fontSize: "calc(12px * var(--fs))", color: "#777" }}><s>€ {p.prezzoPieno}</s></div>
+                  <div className="serif" style={{ fontSize: "calc(20px * var(--fs))", color: p.id === "avvio" ? "#A9C27E" : "#9DBBD9", whiteSpace: "nowrap" }}>
+                    € {p.prezzo}{p.periodo === "/mese" && <span style={{ fontSize: "calc(12px * var(--fs))", fontFamily: SANS }}>/mese</span>}
                   </div>
-                  <div style={{ fontSize: 11, color: "#777" }}>+ IVA</div>
+                  <div style={{ fontSize: "calc(11px * var(--fs))", color: "#777" }}>+ IVA</div>
                 </div>
               </div>
             ))}
             <div className="inv-row" style={{ borderBottom: "none" }}>
               <div style={{ fontFamily: SANS }}>
-                <div style={{ fontSize: 13.5, color: "#ddd", fontWeight: 600 }}>{investimento.trasferte.label}</div>
-                <div style={{ fontSize: 12, color: "#888", marginTop: 2, lineHeight: 1.45 }}>{investimento.trasferte.testo}</div>
+                <div style={{ fontSize: "calc(13.5px * var(--fs))", color: "#ddd", fontWeight: 600 }}>{investimento.trasferte.label}</div>
+                <div style={{ fontSize: "calc(12px * var(--fs))", color: "#888", marginTop: 2, lineHeight: 1.45 }}>{investimento.trasferte.testo}</div>
               </div>
               <div style={{ textAlign: "right", flexShrink: 0, fontFamily: SANS }}>
-                <div className="serif" style={{ fontSize: 18, color: "#ddd", whiteSpace: "nowrap" }}>€ {investimento.trasferte.prezzo}</div>
-                <div style={{ fontSize: 11, color: "#777" }}>+ IVA</div>
+                <div className="serif" style={{ fontSize: "calc(18px * var(--fs))", color: "#ddd", whiteSpace: "nowrap" }}>€ {investimento.trasferte.prezzo}</div>
+                <div style={{ fontSize: "calc(11px * var(--fs))", color: "#777" }}>+ IVA</div>
               </div>
             </div>
             <div style={{ marginTop: 4, padding: "12px 14px", background: "rgba(245,233,122,0.12)", border: "1px solid rgba(245,233,122,0.35)", borderRadius: 10, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
-              <span style={{ fontSize: 13, color: "#F5E97A", fontFamily: SANS, fontWeight: 600 }}>Risparmio complessivo nei primi 6 mesi</span>
-              <span className="serif" style={{ fontSize: 22, color: "#F5E97A", whiteSpace: "nowrap" }}>€ {investimento.risparmio}</span>
+              <span style={{ fontSize: "calc(13px * var(--fs))", color: "#F5E97A", fontFamily: SANS, fontWeight: 600 }}>Risparmio complessivo nei primi 6 mesi</span>
+              <span className="serif" style={{ fontSize: "calc(22px * var(--fs))", color: "#F5E97A", whiteSpace: "nowrap" }}>€ {investimento.risparmio}</span>
             </div>
           </div>
 
           {/* SCONTO RISERVATO */}
           <div style={{ marginTop: 14, padding: "14px 14px", background: "#FFFBEA", border: "1px solid #F5E97A", borderRadius: 12, display: "flex", gap: 12, alignItems: "flex-start" }}>
-            <span style={{ fontSize: 26, flexShrink: 0, marginTop: 2 }}>⭐</span>
+            <span style={{ fontSize: "calc(26px * var(--fs))", flexShrink: 0, marginTop: 2 }}>⭐</span>
             <div>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#92700A", fontFamily: SANS, marginBottom: 6 }}>Sconto riservato a te</div>
-              <p style={{ fontSize: 12.5, color: "#6B5500", lineHeight: 1.68, fontFamily: SANS, margin: 0 }}>{investimento.sconto}</p>
+              <div style={{ fontSize: "calc(13px * var(--fs))", fontWeight: 700, color: "#92700A", fontFamily: SANS, marginBottom: 6 }}>Sconto riservato a te</div>
+              <p style={{ fontSize: "calc(12.5px * var(--fs))", color: "#6B5500", lineHeight: 1.68, fontFamily: SANS, margin: 0 }}>{investimento.sconto}</p>
             </div>
           </div>
 
           {/* CONDIZIONI CONTRATTUALI */}
           <div style={{ marginTop: 14, background: "#fff", border: "1px solid #E8E8E4", borderRadius: 12, padding: "6px 16px" }}>
             <div style={{ ...sectionLabel, paddingTop: 10 }}>Condizioni contrattuali</div>
-            <p style={{ fontSize: 12.5, color: "#888", lineHeight: 1.6, fontFamily: SANS, paddingBottom: 6 }}>{condizioniIntro}</p>
+            <p style={{ fontSize: "calc(12.5px * var(--fs))", color: "#888", lineHeight: 1.6, fontFamily: SANS, paddingBottom: 6 }}>{condizioniIntro}</p>
             {condizioni.map((c, i) => (
               <div key={i} style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
                 <button className="cond-btn" onClick={() => setOpenCond(openCond === i ? null : i)}>
-                  <span style={{ fontSize: 13.5, fontWeight: 600, color: "#1C1C1C" }}>{i + 1}. {c.titolo}</span>
-                  <span style={{ fontSize: 13, color: "#999", flexShrink: 0 }}>{openCond === i ? "▾" : "▸"}</span>
+                  <span style={{ fontSize: "calc(13.5px * var(--fs))", fontWeight: 600, color: "#1C1C1C" }}>{i + 1}. {c.titolo}</span>
+                  <span style={{ fontSize: "calc(13px * var(--fs))", color: "#999", flexShrink: 0 }}>{openCond === i ? "▾" : "▸"}</span>
                 </button>
                 {openCond === i && (
                   <div style={{ paddingBottom: 12 }}>
                     {c.testo.map((par, j) => (
-                      <p key={j} style={{ fontSize: 13, color: "#666", lineHeight: 1.65, fontFamily: SANS, marginTop: j ? 6 : 0 }}>{par}</p>
+                      <p key={j} style={{ fontSize: "calc(13px * var(--fs))", color: "#666", lineHeight: 1.65, fontFamily: SANS, marginTop: j ? 6 : 0 }}>{par}</p>
                     ))}
                   </div>
                 )}
@@ -452,17 +454,17 @@ export default function Preventivo() {
           {/* ACCETTAZIONE */}
           <div style={{ marginTop: 14, background: "#fff", border: "1px solid #E8E8E4", borderRadius: 12, padding: "14px 16px 16px" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-              <div className="serif" style={{ fontSize: 20, color: "#1C1C1C" }}>{accettazione.titolo}</div>
-              <span style={{ fontSize: 11.5, fontWeight: 700, fontFamily: SANS, color: scaduto ? "#fff" : "#6B5500", background: scaduto ? "#C0392B" : "#FFF6C2", borderRadius: 999, padding: "4px 10px", whiteSpace: "nowrap" }}>
+              <div className="serif" style={{ fontSize: "calc(20px * var(--fs))", color: "#1C1C1C" }}>{accettazione.titolo}</div>
+              <span style={{ fontSize: "calc(11.5px * var(--fs))", fontWeight: 700, fontFamily: SANS, color: scaduto ? "#fff" : "#6B5500", background: scaduto ? "#C0392B" : "#FFF6C2", borderRadius: 999, padding: "4px 10px", whiteSpace: "nowrap" }}>
                 ⏳ {testoScadenza}
               </span>
             </div>
-            <p style={{ fontSize: 13, color: "#666", lineHeight: 1.6, fontFamily: SANS, marginTop: 6 }}>
+            <p style={{ fontSize: "calc(13px * var(--fs))", color: "#666", lineHeight: 1.6, fontFamily: SANS, marginTop: 6 }}>
               Validità del preventivo: 7 giorni dalla data di emissione (fino al {formatData(date.scadenza)}). {accettazione.testo}
             </p>
 
             {scaduto ? (
-              <a href={scadutoUrl} target="_blank" rel="noreferrer" style={{ marginTop: 12, display: "flex", alignItems: "center", justifyContent: "center", minHeight: 46, borderRadius: 12, background: "#1C1C1C", color: "#fff", textDecoration: "none", fontSize: 14, fontWeight: 700, fontFamily: SANS }}>
+              <a href={scadutoUrl} target="_blank" rel="noreferrer" style={{ marginTop: 12, display: "flex", alignItems: "center", justifyContent: "center", minHeight: 46, borderRadius: 12, background: "#1C1C1C", color: "#fff", textDecoration: "none", fontSize: "calc(14px * var(--fs))", fontWeight: 700, fontFamily: SANS }}>
                 Il preventivo è scaduto · chiedi un aggiornamento
               </a>
             ) : (
@@ -471,7 +473,7 @@ export default function Preventivo() {
                   {plans.map((p) => (
                     <label key={p.id} className="chk" style={{ background: scelti[p.id] ? p.bg : "#F7F7F4", border: `1px solid ${scelti[p.id] ? p.border : "#E8E8E4"}` }}>
                       <input type="checkbox" checked={!!scelti[p.id]} onChange={() => setScelti((s) => ({ ...s, [p.id]: !s[p.id] }))} style={{ accentColor: p.color }} />
-                      <span style={{ fontSize: 13, color: "#333", lineHeight: 1.5 }}>
+                      <span style={{ fontSize: "calc(13px * var(--fs))", color: "#333", lineHeight: 1.5 }}>
                         <b style={{ color: p.color }}>{p.name}</b>
                         {" · "}
                         {p.periodo === "/mese"
@@ -486,25 +488,25 @@ export default function Preventivo() {
                   target="_blank"
                   rel="noreferrer"
                   aria-disabled={!serviziScelti.length}
-                  style={{ marginTop: 12, display: "flex", alignItems: "center", justifyContent: "center", minHeight: 46, borderRadius: 12, background: serviziScelti.length ? "#25D366" : "#CFCFCA", color: "#fff", textDecoration: "none", fontSize: 14.5, fontWeight: 700, fontFamily: SANS, pointerEvents: serviziScelti.length ? "auto" : "none" }}
+                  style={{ marginTop: 12, display: "flex", alignItems: "center", justifyContent: "center", minHeight: 46, borderRadius: 12, background: serviziScelti.length ? "#25D366" : "#CFCFCA", color: "#fff", textDecoration: "none", fontSize: "calc(14.5px * var(--fs))", fontWeight: 700, fontFamily: SANS, pointerEvents: serviziScelti.length ? "auto" : "none" }}
                 >
                   ✅ Accetto il preventivo su WhatsApp
                 </a>
               </>
             )}
-            <p style={{ fontSize: 11.5, color: "#aaa", lineHeight: 1.55, fontFamily: SANS, marginTop: 10 }}>{accettazione.clausole}</p>
+            <p style={{ fontSize: "calc(11.5px * var(--fs))", color: "#aaa", lineHeight: 1.55, fontFamily: SANS, marginTop: 10 }}>{accettazione.clausole}</p>
           </div>
 
           {/* FOOTER */}
           <footer style={{ marginTop: 16, background: "#fff", border: "1px solid #E8E8E4", borderRadius: 12, padding: "16px 16px", textAlign: "center" }}>
-            <div style={{ fontSize: 12, color: "#999", textTransform: "uppercase", letterSpacing: 1, fontFamily: SANS, fontWeight: 600 }}>
+            <div style={{ fontSize: "calc(12px * var(--fs))", color: "#999", textTransform: "uppercase", letterSpacing: 1, fontFamily: SANS, fontWeight: 600 }}>
               Grazie per aver scelto {fornitore.nome}
             </div>
-            <p style={{ marginTop: 8, fontSize: 13, color: "#666", fontFamily: SANS, lineHeight: 1.65 }}>
+            <p style={{ marginTop: 8, fontSize: "calc(13px * var(--fs))", color: "#666", fontFamily: SANS, lineHeight: 1.65 }}>
               {accettazione.grazie}
             </p>
-            <div className="serif" style={{ marginTop: 8, fontSize: 15, color: "#1C1C1C", fontStyle: "italic" }}>{accettazione.firma}</div>
-            <div style={{ marginTop: 12, paddingTop: 10, borderTop: "1px solid #EEE", fontSize: 11.5, color: "#999", fontFamily: SANS, lineHeight: 1.6 }}>
+            <div className="serif" style={{ marginTop: 8, fontSize: "calc(15px * var(--fs))", color: "#1C1C1C", fontStyle: "italic" }}>{accettazione.firma}</div>
+            <div style={{ marginTop: 12, paddingTop: 10, borderTop: "1px solid #EEE", fontSize: "calc(11.5px * var(--fs))", color: "#999", fontFamily: SANS, lineHeight: 1.6 }}>
               {fornitore.ragioneSociale} · {fornitore.indirizzo} · P. IVA {fornitore.piva}<br />
               {fornitore.sito} · {fornitore.email} · {fornitore.telefono}
             </div>
@@ -539,7 +541,7 @@ export default function Preventivo() {
             padding: "10px 14px",
             cursor: "pointer",
             boxShadow: "0 10px 24px rgba(37,211,102,0.28)",
-            fontSize: 13,
+            fontSize: "calc(13px * var(--fs))",
             fontWeight: 700,
             fontFamily: SANS,
             minHeight: 44,
@@ -559,11 +561,11 @@ export default function Preventivo() {
             style={{ width: "100%", maxWidth: 420, background: "#fff", borderRadius: 18, border: "1px solid #ECECEC", padding: "14px 14px 12px", boxShadow: "0 22px 50px rgba(0,0,0,0.16)" }}
           >
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-              <div style={{ fontSize: 15, fontWeight: 700, color: "#1C1C1C", fontFamily: SANS }}>Supporto rapido su WhatsApp</div>
-              <button onClick={() => setShowContactModal(false)} style={{ border: "none", background: "transparent", cursor: "pointer", fontSize: 20, lineHeight: 1, color: "#999", minWidth: 36, minHeight: 36 }}>×</button>
+              <div style={{ fontSize: "calc(15px * var(--fs))", fontWeight: 700, color: "#1C1C1C", fontFamily: SANS }}>Supporto rapido su WhatsApp</div>
+              <button onClick={() => setShowContactModal(false)} style={{ border: "none", background: "transparent", cursor: "pointer", fontSize: "calc(20px * var(--fs))", lineHeight: 1, color: "#999", minWidth: 36, minHeight: 36 }}>×</button>
             </div>
 
-            <p style={{ margin: 0, fontSize: 13, color: "#666", lineHeight: 1.6, fontFamily: SANS }}>
+            <p style={{ margin: 0, fontSize: "calc(13px * var(--fs))", color: "#666", lineHeight: 1.6, fontFamily: SANS }}>
               Ciao {cliente.titolare.split(" ")[0]}, sono {contatto.nome}! Se hai dubbi o domande sul preventivo, o vuoi sistemare qualcosa per l'apertura, scrivimi pure. Sono a disposizione!
             </p>
 
@@ -571,7 +573,7 @@ export default function Preventivo() {
               href={whatsappUrl}
               target="_blank"
               rel="noreferrer"
-              style={{ marginTop: 12, display: "inline-flex", alignItems: "center", justifyContent: "center", width: "100%", minHeight: 44, borderRadius: 12, background: "#25D366", color: "#fff", textDecoration: "none", fontSize: 14, fontWeight: 700, fontFamily: SANS }}
+              style={{ marginTop: 12, display: "inline-flex", alignItems: "center", justifyContent: "center", width: "100%", minHeight: 44, borderRadius: 12, background: "#25D366", color: "#fff", textDecoration: "none", fontSize: "calc(14px * var(--fs))", fontWeight: 700, fontFamily: SANS }}
             >
               Apri WhatsApp
             </a>
