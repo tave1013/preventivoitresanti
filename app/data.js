@@ -30,8 +30,8 @@ export const contatto = {
 
 // Date in formato AAAA-MM-GG. La pagina calcola da sola il tempo rimasto.
 export const date = {
-  emissione: "2026-11-09",
-  scadenza: "2026-11-16",
+  emissione: "2026-11-10",
+  scadenza: "2026-11-17T12:32:00+01:00",
 };
 
 // Servizio selezionato all'apertura della pagina
